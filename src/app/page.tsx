@@ -2,21 +2,23 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Flower2, 
-  Users, 
-  Clock, 
-  MapPin, 
-  Phone, 
-  Heart, 
-  Star, 
-  ArrowRight, 
+import {
+  Flower2,
+  Users,
+  Clock,
+  MapPin,
+  Phone,
+  Heart,
+  Star,
+  ArrowRight,
   CheckCircle2,
   User,
   ChevronLeft,
   ChevronRight,
   Crown
 } from 'lucide-react';
+import Footer from './components/Footer';
+import FloatingCTA from './components/FloatingCTA';
 
 
 interface Service {
@@ -65,10 +67,10 @@ const services: Service[] = [
   },
   {
     id: 'annual-premium',
-    title: 'Annual Premium',
-    description: 'Exclusive yearly membership including take away service in alternative months and VIP perks',
+    title: 'Annual VIP Membership',
+    description: 'Exclusive yearly access including bi-monthly packages and full concierge perks.',
     duration: 'Yearly',
-    price: '₹15000',
+    price: '₹49,999',
     icon: <Star className="w-8 h-8" />,
   },
 ];
@@ -1043,7 +1045,7 @@ export default function SpaLanding() {
               <h2 className="font-serif text-3xl md:text-4xl font-light tracking-tight leading-snug mt-4">A private retreat designed for <span className="italic rose-gold-gradient-text">absolute comfort</span> & rejuvenation.</h2>
               
               <div className="mt-6 max-w-md text-base text-white/75 font-light leading-relaxed">
-                Located in a serene corner of Kondotty, Wellness Spa offers a completely private and luxurious environment where you can unwind without any distractions.
+                Located in a serene corner of Kondotty, ME2SPA offers a completely private and luxurious environment where you can unwind without any distractions.
               </div>
               
               <div className="flex gap-10 mt-12">
@@ -1111,12 +1113,27 @@ export default function SpaLanding() {
           
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              "I have visited many spas in India and abroad. This is by far the most luxurious and relaxing experience. 10/10 would recommend.",
-              "The attention to detail is incredible. From the moment you walk in, you feel like royalty. The therapists are truly gifted.",
-              "Very clean, private and professional. I felt safe and comfortable the entire time. Will definitely be back next month."
-            ].map((quote, i) => (
-              <motion.div 
-                key={i} 
+              {
+                quote: "The privacy and attention to detail in Kondotty are exceptional. Definitely the top relaxation therapy experience near Calicut airport.",
+                author: "Rahul M.",
+                city: "Calicut",
+                rating: "★★★★★"
+              },
+              {
+                quote: "Professional therapists and spotless private suites. Completely refreshed after a long week of work.",
+                author: "Shyam S.",
+                city: "Malappuram",
+                rating: "★★★★★"
+              },
+              {
+                quote: "Courteous staff, zero hassle with booking, and total discretion. Will definitely book another session soon.",
+                author: "Dr. Arun K.",
+                city: "Manjeri",
+                rating: "★★★★★"
+              }
+            ].map((testimonial, i) => (
+              <motion.div
+                key={i}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1125,13 +1142,13 @@ export default function SpaLanding() {
                 className="glass-card p-8 rounded-3xl border border-[#D48FB1]/15 transition-all duration-300"
               >
                 <div className="text-4xl rose-gold-gradient-text font-serif leading-none -mt-2 mb-4">“</div>
-                <p className="text-white/80 text-sm font-light leading-relaxed">{quote}</p>
+                <p className="text-white/80 text-sm font-light leading-relaxed">{testimonial.quote}</p>
                 <div className="h-px bg-white/10 my-6"></div>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-[#D48FB1]/15 flex items-center justify-center text-xs text-[#D48FB1]">✦</div>
                   <div>
-                    <div className="text-xs font-semibold text-white">Guest from Kozhikode</div>
-                    <div className="text-[#D48FB1] text-[10px]">★★★★★</div>
+                    <div className="text-xs font-semibold text-white">{testimonial.author}</div>
+                    <div className="text-[#D48FB1] text-[10px]">{testimonial.city} • {testimonial.rating}</div>
                   </div>
                 </div>
               </motion.div>
@@ -1171,106 +1188,10 @@ export default function SpaLanding() {
       </div>
 
       {/* FOOTER */}
-      <footer className="bg-[#1A1518] pt-20 pb-12 text-white/60 text-sm">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-12 gap-y-16">
-          <div className="md:col-span-5">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="text-[#D48FB1]">
-                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="5" r="2.5" fill="currentColor" stroke="none" />
-                  <path d="M12 9c-3.5 0-5 3.5-5 6 0 2.5 1.5 4 1.5 6 0 1-1 2-1 2" />
-                  <path d="M12 9c3.5 0 5 3.5 5 6 0 2.5-1.5 4-1.5 6 0 1 1 2 1 2" />
-                  <path d="M7 14c-1.5 0-3-1.5-3-3" />
-                  <path d="M17 14c1.5 0 3-1.5 3-3" />
-                </svg>
-              </div>
-              <div className="font-serif text-xl text-white tracking-tight font-semibold">ME2SPA</div>
-            </div>
-            
-            <div className="max-w-xs">A luxury wellness destination offering personalized therapeutic massage services in Kerala.</div>
-            
-            <div className="mt-12 text-xs leading-loose opacity-60">
-              © 2026 ME2SPA<br />
-              All Rights Reserved.<br />
-              Privacy • Terms • Responsible Service
-            </div>
-          </div>
-          
-          <div className="md:col-span-3">
-            <div className="uppercase text-xs tracking-widest mb-6 text-white">CONTACT</div>
-            <div className="space-y-4">
-              <a href="tel:+918086777555" className="block hover:text-white transition">+91 8086 777 555</a>
-              <a href="#" className="block hover:text-white transition">hello@serenovaspa.in</a>
-              <div className="pt-4">
-                Near Calicut Airport Road,<br />
-                Malappuram, Kerala
-              </div>
-            </div>
-          </div>
-          
-          <div className="md:col-span-4">
-            <div className="uppercase text-xs tracking-widest mb-6 text-white">HOURS</div>
-            
-            <div className="grid grid-cols-2 gap-y-6 text-xs">
-              <div>Monday — Thursday</div>
-              <div className="text-right">10:00 AM – 09:00 PM</div>
-              
-              <div>Friday — Sunday</div>
-              <div className="text-right">09:00 AM – 10:00 PM</div>
-            </div>
-            
-            <div className="mt-16 text-xs border-t border-white/10 pt-6">
-              We are a completely private establishment. All bookings are handled with the utmost confidentiality.
-            </div>
-            
-            <div className="flex items-center gap-4 mt-8">
-              {/* Instagram Icon */}
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-11 h-11 rounded-2xl bg-[#D48FB1]/10 border border-[#D48FB1]/30 flex items-center justify-center text-[#D48FB1] hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all hover:scale-110 shadow-[0_0_15px_rgba(212,143,176,0.15)] group"
-                aria-label="Instagram"
-                title="Instagram"
-              >
-                <svg className="w-5 h-5 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-              </a>
+      <Footer />
 
-              {/* WhatsApp Icon */}
-              <a 
-                href="https://wa.me/918086777555" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-11 h-11 rounded-2xl bg-[#D48FB1]/10 border border-[#D48FB1]/30 flex items-center justify-center text-[#D48FB1] hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all hover:scale-110 shadow-[0_0_15px_rgba(212,143,176,0.15)] group"
-                aria-label="WhatsApp"
-                title="WhatsApp"
-              >
-                <svg className="w-5 h-5 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.007 3.676 3.75-1.009zm10.742-6.516c.284.143.475.237.569.395.095.158.095.918-.237 1.849-.332.931-1.47 1.803-2.42 1.849-.95.047-1.898-.284-3.56-1.043-2.56-1.171-4.17-3.791-4.296-3.963-.126-.172-1.043-1.385-1.043-2.643 0-1.258.65-1.877.882-2.13.232-.253.506-.316.674-.316.168 0 .337.003.484.009.158.007.37.007.545.427.185.443.626 1.533.682 1.644.056.111.095.242.02.395-.075.153-.114.248-.227.381-.114.133-.242.298-.346.4-.114.114-.233.238-.101.465.133.227.591.974 1.267 1.576.87.775 1.604 1.015 1.831 1.129.227.114.36.095.492-.057.133-.152.569-.664.721-.892.152-.227.304-.189.513-.114z"/>
-                </svg>
-              </a>
-
-              {/* Facebook Icon */}
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-11 h-11 rounded-2xl bg-[#D48FB1]/10 border border-[#D48FB1]/30 flex items-center justify-center text-[#D48FB1] hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all hover:scale-110 shadow-[0_0_15px_rgba(212,143,176,0.15)] group"
-                aria-label="Facebook"
-                title="Facebook"
-              >
-                <svg className="w-5 h-5 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div className="text-center text-[10px] mt-24 opacity-30">Crafted with passion for wellness • Not affiliated with any other brand</div>
-      </footer>
+      {/* Floating CTA Bar */}
+      <FloatingCTA />
 
       {/* SUCCESS MODAL */}
       <AnimatePresence>
